@@ -264,7 +264,7 @@ func handleGroupOffsetRequest(broker *sarama.Broker, request *sarama.OffsetFetch
 			WithField("group", request.ConsumerGroup).
 			WithField("error", err).
 			Error("Failed to request group offsets")
-		return
+		panic("restart me please")
 	}
 
 	for topic, partitions := range response.Blocks {
@@ -304,7 +304,7 @@ func handleTopicOffsetRequest(broker *sarama.Broker, request *sarama.OffsetReque
 			WithField("offset.type", offsetType).
 			WithField("error", err).
 			Error("Failed to request topic offsets")
-		return
+		panic("restart me please")
 	}
 
 	for topic, partitions := range response.Blocks {
